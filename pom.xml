@@ -11,6 +11,16 @@
         <version>1.5.1.RELEASE</version>
     </parent>
     <dependencies>
+	<dependency>
+		<groupId>io.shiftleft</groupId>
+    		<artifactId>hello-shiftleft</artifactId>
+    		<version>0.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>io.opencensus</groupId>
+    		<artifactId>shiftleft</artifactId>
+    		<version>0.0.1</version>
+	</dependency>
         <dependency>
     		<groupId>commons-io</groupId>
     		<artifactId>commons-io</artifactId>
