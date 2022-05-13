@@ -82,11 +82,21 @@ public class CustomerController {
 
 	@PostConstruct
 	public void init() {
+		String sfdcUsername = env.getProperty("sfdc.username");
+		String sfdcPassword = env.getProperty("sfdc.password");
+		String sfdcUrl = "https://salesforce.com";
 		log.info("Start Loading SalesForce Properties");
 		log.info("Url is {}", env.getProperty("sfdc.url"));
 		log.info("UserName is {}", env.getProperty("sfdc.username"));
 		log.info("Password is {}", env.getProperty("sfdc.password"));
 		log.info("End Loading SalesForce Properties");
+		this.setSalesforceProperties(sfdcUrl, sfdcUsername, sfdcPassword);
+	}
+
+	public void setSalesforceProperties(String url, String username, String password) {
+		env.setProperty("sfdc.url", url);
+		env.setProperty("sfdc.username", username);
+		env.setProperty("sfdc.password", password);
 	}
 
 	private void dispatchEventToSalesForce(String event)
