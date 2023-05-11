@@ -127,6 +127,9 @@ public class CustomerController {
         throw new InvalidCustomerRequestException();
       }
 
+	  String passportNumber = "Mypassport";
+	  log.info(passportNumber);
+
       Customer customer = customerRepository.findOne(customerId);
 		if (null == customer) {
 		  throw new CustomerNotFoundException();
