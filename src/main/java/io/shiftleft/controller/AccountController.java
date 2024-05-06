@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.doordash.datapassback.sink.utils.dropAdjustEventBasedOnTokenRules.Rules;
 
 
 /**
@@ -28,7 +27,6 @@ public class AccountController {
     @GetMapping("/account")
     public Iterable<Account> getAccountList(HttpServletResponse response, HttpServletRequest request) {
         response.addHeader("test-header-detection", new Account().toString());
-        Rules.dropAdjustEventBasedOnTokenRules(response);
         log.info("Account Data is {}", this.accountRepository.findOne(1l).toString());
         return this.accountRepository.findAll();
     }
