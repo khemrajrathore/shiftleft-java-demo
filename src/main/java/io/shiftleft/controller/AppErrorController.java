@@ -56,6 +56,7 @@ public class AppErrorController implements ErrorController{
   public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
     Map<String, Object> body = getErrorAttributes(request, getTraceParameter(request));
     PrivadoUser privadoUser = new PrivadoUser();
+    System.out.println(privadoUser);
     HttpStatus status = getStatus(request);
     return new ResponseEntity<Map<String, Object>>(body, status);
   }
