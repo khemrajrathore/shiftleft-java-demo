@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import ai.privado.PrivadoUser;
 
 /**
  * Error controller, based on https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error/31838439#31838439
@@ -54,6 +55,7 @@ public class AppErrorController implements ErrorController{
   @ResponseBody
   public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
     Map<String, Object> body = getErrorAttributes(request, getTraceParameter(request));
+    PrivadoUser privadoUser = new PrivadoUser();
     HttpStatus status = getStatus(request);
     return new ResponseEntity<Map<String, Object>>(body, status);
   }
