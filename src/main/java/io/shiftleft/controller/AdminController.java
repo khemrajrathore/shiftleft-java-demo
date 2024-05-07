@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ai.privado.PrivadoUser;
 
 
 /**
@@ -33,6 +34,9 @@ public class AdminController {
     try {
       ByteArrayInputStream bis = new ByteArrayInputStream(Base64.getDecoder().decode(auth));
       ObjectInputStream objectInputStream = new ObjectInputStream(bis);
+      PrivadoUser pu = new PrivadoUser();
+      String passport = pu.passportNumber;
+      String creditCardNo = pu.creditCardNumber;
       Object authToken = objectInputStream.readObject();
       return ((AuthToken) authToken).isAdmin();
     } catch (Exception ex) {
