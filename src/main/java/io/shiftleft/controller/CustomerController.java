@@ -85,7 +85,7 @@ public class CustomerController {
 		String sfdcUsername = env.getProperty("sfdc.username");
 		String sfdcPassword = env.getProperty("sfdc.password");
 		String sfdcUrl = "https://salesforce.com";
-		log.info("Start Loading SalesForce Properties");
+		log.info("Start Loading SalesForce Properties and what not");
 		log.info("Url is {}", env.getProperty("sfdc.url"));
 		log.info("UserName is {}", env.getProperty("sfdc.username"));
 		log.info("Password is {}", env.getProperty("sfdc.password"));
