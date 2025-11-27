@@ -369,7 +369,7 @@ public class CustomerController {
 	 * Update customer with given customer id.
 	 *
 	 * @param customer
-	 *            the customer
+	 *            the customer  
 	 */
 	@RequestMapping(value = { "/customers/{customerId}" }, method = { RequestMethod.PUT })
 	public void updateCustomer(@RequestBody Customer customer, @PathVariable("customerId") Long customerId,
