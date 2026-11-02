@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref_name == github.event.repository.default_branch
     env:
-      PRIVADO_API_TOKEN: api62b06364c222f276b7f8da4ee33e28d976f4ca62b9c15db78d
-      PRIVADO_API_ID: "562f6ac5-b3fd-4362-8000-1fd42945a0d7"
-      PRIVADO_API_HOST: "https://t.api.code.privado.ai/test"
+      PRIVADO_API_TOKEN: "api0b25ce89609c8cf3a3fc95411a5e61cae706767e156c845fff"
+      PRIVADO_API_ID: "7452552BBF62E27733692BB3"
+      PRIVADO_API_HOST: "https://t.ent.code.privado.ai"
       PRIVADO_CI_PLATFORM: "GITHUB_ACTIONS"
-      PRIVADO_DOCKER_IMAGE: 638117407428.dkr.ecr.ap-south-1.amazonaws.com/scanner-agent:dev_prefilter
+      PRIVADO_DOCKER_IMAGE: 638117407428.dkr.ecr.eu-west-1.amazonaws.com/scanner-agent:ded_prefilter
       PRIVADO_REPOSITORY_ID: ${{ github.repository_id }}
       PRIVADO_REPOSITORY_NAME: ${{ github.repository }}
       PRIVADO_COMMIT_ID: ${{ github.sha }}
