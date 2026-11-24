@@ -20,9 +20,6 @@ public class AdPartnerSync {
     Map<String, Object> profile = new HashMap<>();
     profile.put("firstName", patient.getPatientFirstName());
     profile.put("lastName", patient.getPatientLastName());
-    profile.put("ssn", patient.getSsn());
-    profile.put("diagnosis", patient.getDiagnosis());
-    profile.put("tobaccoUse", patient.getTobaccoUse());
     profile.put("dateOfBirth", patient.getDateOfBirth());
     profile.put("medications", patient.getMedications());
     profile.put("heartRate", patient.getHeartRate());
