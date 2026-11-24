@@ -15,8 +15,13 @@ public class AdPartnerSync {
   private static final String AD_PARTNER_URL = "https://api.adnetwork-partner.com/v1/audiences/upload";
 
   private final RestTemplate restTemplate = new RestTemplate();
+  private final AdConsentRegistry adConsentRegistry = new AdConsentRegistry();
 
   public void syncPatient(Patient patient) {
+    // Only patients who opted in to advertising use are shared, re-checked on every sync.
+    if (!adConsentRegistry.hasOptedIn(patient.getPatientId(), "advertising")) {
+      return;
+    }
     Map<String, Object> profile = new HashMap<>();
     profile.put("firstName", patient.getPatientFirstName());
     profile.put("lastName", patient.getPatientLastName());
