@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Pushes patient profiles to our advertising partner so they can build
+ * Pushes patient payloads to our advertising partner so they can build
  * look-alike audiences for their own ad campaigns.
  */
 public class AdPartnerSync {
@@ -22,10 +22,10 @@ public class AdPartnerSync {
     if (!adConsentRegistry.hasOptedIn(patient.getPatientId(), "advertising")) {
       return;
     }
-    Map<String, Object> profile = new HashMap<>();
-    profile.put("firstName", patient.getPatientFirstName());
-    profile.put("lastName", patient.getPatientLastName());
-    profile.put("dateOfBirth", patient.getDateOfBirth());
-    restTemplate.postForObject(AD_PARTNER_URL, profile, String.class);
+    Map<String, Object> payload = new HashMap<>();
+    payload.put("firstName", patient.getPatientFirstName());
+    payload.put("lastName", patient.getPatientLastName());
+    payload.put("dateOfBirth", patient.getDateOfBirth());
+    restTemplate.postForObject(AD_PARTNER_URL, payload, String.class);
   }
 }
