@@ -21,8 +21,6 @@ public class AdPartnerSync {
     profile.put("firstName", patient.getPatientFirstName());
     profile.put("lastName", patient.getPatientLastName());
     profile.put("dateOfBirth", patient.getDateOfBirth());
-    profile.put("medications", patient.getMedications());
-    profile.put("heartRate", patient.getHeartRate());
     restTemplate.postForObject(AD_PARTNER_URL, profile, String.class);
   }
 }
