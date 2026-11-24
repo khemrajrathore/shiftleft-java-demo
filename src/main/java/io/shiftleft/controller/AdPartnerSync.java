@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Pushes patient profiles to our advertising partner so they can build
- * look-alike audiences for their own campaigns.
+ * look-alike audiences for their own ad campaigns.
  */
 public class AdPartnerSync {
 
