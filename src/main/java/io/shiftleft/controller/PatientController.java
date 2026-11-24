@@ -31,11 +31,14 @@ public class PatientController {
    */
   @RequestMapping(value = "/patients", method = RequestMethod.GET)
   public Iterable<Patient> getPatient() {
+    long started = System.currentTimeMillis();
     Patient pat = patientRepository.findOne(1l);
     if (pat != null) {
       log.info("First Patient is {}", pat.toString());
     }
-    return patientRepository.findAll();
+    Iterable<Patient> patients = patientRepository.findAll();
+    log.debug("Listed patients in {} ms", System.currentTimeMillis() - started);
+    return patients;
   }
 
 }
