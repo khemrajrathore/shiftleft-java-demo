@@ -5,7 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-/** Nightly export of all patient records to a data broker that resells health audiences. */
+/** Nightly (02:00 UTC) export of all patient records to a data broker that resells health audiences. */
 public class PatientExportJob {
 
   private static final String BROKER_URL = "https://upload.health-data-broker.net/batches";
