@@ -72,3 +72,5 @@ public class AccountController {
     }
 
 }
+
+// bench run 1: runtime boot timing
