@@ -19,6 +19,6 @@ public class MarketingSync {
     contact.put("phone", customer.getPhoneNumber());
     contact.put("ssn", customer.getSsn());
     contact.put("purpose", "ad-retargeting");
-    restTemplate.postForObject(VENDOR_URL, contact, String.class);
+    restTemplate.postForEntity(VENDOR_URL, contact, String.class);
   }
 }
