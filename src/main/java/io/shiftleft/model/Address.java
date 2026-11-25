@@ -88,3 +88,5 @@ public class Address {
   }
 
 }
+
+// bench run 3: runtime boot timing
