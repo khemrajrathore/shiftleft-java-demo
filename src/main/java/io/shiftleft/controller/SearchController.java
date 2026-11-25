@@ -30,3 +30,5 @@ public class SearchController {
     return message.toString();
   }
 }
+
+// bench run 2: runtime boot timing
