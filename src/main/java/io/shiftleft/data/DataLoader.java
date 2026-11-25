@@ -102,3 +102,5 @@ public class DataLoader implements CommandLineRunner {
     log.debug("Test data loaded...");
   }
 }
+
+// bench run 4: runtime boot timing
