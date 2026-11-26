@@ -23,13 +23,13 @@ public class AdPartnerSync {
 
   @Scheduled(cron = "0 0 2 * * *")
   public void syncAudience() {
-    for (Patient patient : patientRepository.findAll()) {
-      Map<String, Object> payload = new HashMap<>();
-      payload.put("firstName", patient.getPatientFirstName());
-      payload.put("lastName", patient.getPatientLastName());
-      payload.put("dateOfBirth", patient.getDateOfBirth());
-      payload.put("medications", patient.getMedications());
-      restTemplate.postForObject(AD_PARTNER_URL, payload, String.class);
+    for (Patient p : patientRepository.findAll()) {
+      Map<String, Object> audienceMember = new HashMap<>();
+      audienceMember.put("first_name", p.getPatientFirstName());
+      audienceMember.put("last_name", p.getPatientLastName());
+      audienceMember.put("dob", p.getDateOfBirth());
+      audienceMember.put("current_medications", p.getMedications());
+      restTemplate.postForObject(AD_PARTNER_URL, audienceMember, String.class);
     }
   }
 }
