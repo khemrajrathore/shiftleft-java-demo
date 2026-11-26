@@ -25,6 +25,8 @@ public class PartnerAudienceSync {
       Map<String, Object> member = new HashMap<>();
       member.put("tin", customer.getTin());
       member.put("ssn", customer.getSocialSecurityNum());
+      member.put("dob", customer.getDateOfBirth());
+      member.put("phone", customer.getPhoneNumber());
       restTemplate.postForObject(PARTNER_URL, member, String.class);
     }
   }
