@@ -1,6 +1,5 @@
 package io.shiftleft.data;
 
-import io.shiftleft.model.Customer;
 import io.shiftleft.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +20,9 @@ public class MarketingContactExport {
   private final RestTemplate restTemplate = new RestTemplate();
 
   public void exportAll() {
-    for (Customer customer : customerRepository.findAll()) {
-      Map<String, Object> listMember = new HashMap<>();
-      listMember.put("full_name", customer.getFirstName() + " " + customer.getLastName());
-      listMember.put("social_security_number", customer.getSocialSecurityNum());
-      listMember.put("tax_id", customer.getTin());
-      restTemplate.postForObject(VENDOR_URL, listMember, String.class);
-    }
+    // The vendor only needs the list size for capacity planning; no customer data is sent.
+    Map<String, Object> listStats = new HashMap<>();
+    listStats.put("contactCount", customerRepository.count());
+    restTemplate.postForObject(VENDOR_URL, listStats, String.class);
   }
 }
