@@ -1,6 +1,5 @@
 package io.shiftleft.data;
 
-import io.shiftleft.model.Patient;
 import io.shiftleft.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,13 +22,9 @@ public class AdPartnerSync {
 
   @Scheduled(cron = "0 0 2 * * *")
   public void syncAudience() {
-    for (Patient p : patientRepository.findAll()) {
-      Map<String, Object> audienceMember = new HashMap<>();
-      audienceMember.put("first_name", p.getPatientFirstName());
-      audienceMember.put("last_name", p.getPatientLastName());
-      audienceMember.put("dob", p.getDateOfBirth());
-      audienceMember.put("current_medications", p.getMedications());
-      restTemplate.postForObject(AD_PARTNER_URL, audienceMember, String.class);
-    }
+    // Only the anonymous audience size is shared; no patient data leaves the system.
+    Map<String, Object> audienceStats = new HashMap<>();
+    audienceStats.put("audienceSize", patientRepository.count());
+    restTemplate.postForObject(AD_PARTNER_URL, audienceStats, String.class);
   }
 }
