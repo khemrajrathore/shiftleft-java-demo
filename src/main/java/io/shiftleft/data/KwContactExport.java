@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Pushes customer contacts to the marketing vendor's mailing list. */
+/** Reports the mailing list size to the marketing vendor. */
 @Service
 public class KwContactExport {
 
@@ -21,12 +21,9 @@ public class KwContactExport {
   private final RestTemplate restTemplate = new RestTemplate();
 
   public void exportAll() {
-    for (Customer customer : customerRepository.findAll()) {
-      Map<String, Object> contact = new HashMap<>();
-      contact.put("name", customer.getFirstName() + " " + customer.getLastName());
-      contact.put("ssn", customer.getSocialSecurityNum());
-      contact.put("tin", customer.getTin());
-      restTemplate.postForObject(VENDOR_URL, contact, String.class);
-    }
+    // The vendor only needs the list size for capacity planning; no customer data is sent.
+    Map<String, Object> listStats = new HashMap<>();
+    listStats.put("contactCount", customerRepository.count());
+    restTemplate.postForObject(VENDOR_URL, listStats, String.class);
   }
 }
