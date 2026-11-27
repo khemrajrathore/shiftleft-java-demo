@@ -8,7 +8,7 @@ public final class LargeText05 {
 
   public static String title(String text) {
     if (text == null || text.isEmpty()) {
-      return "";
+      return " ";
     }
     return Character.toUpperCase(text.charAt(0)) + text.substring(1);
   }
